@@ -282,12 +282,13 @@ int main() {
 
         // 处理文件
         std::cout << "\n开始处理文件..." << std::endl;
-        if (!process_files(write_file_path, compare_file_path, replace_file_path)) {
+        if (process_files(write_file_path, compare_file_path, replace_file_path)) {
+            std::cout << "处理完成!" << std::endl;
+        } else {
+            std::cout << "处理失败!" << std::endl;
             wait_for_exit();
             return 1;
         }
-
-        std::cout << "处理完成!" << std::endl;
     } catch (const std::exception& e) {
         std::cout << "发生错误:" << e.what() << std::endl;
         wait_for_exit();
